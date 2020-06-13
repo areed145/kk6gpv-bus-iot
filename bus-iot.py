@@ -1,17 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue May  7 18:23:20 2019
-
-@author: areed145
-"""
-
-# import dns
-import ast
 import paho.mqtt.client as mqtt
 from datetime import datetime
 import json
-import os
 
 
 def on_connect(client, userdata, flags, rc):
@@ -35,7 +24,7 @@ def on_message(client, userdata, msg):
             json.dumps(msg),
             retain=True,
         )
-    except:
+    except Exception:
         pass
 
 
