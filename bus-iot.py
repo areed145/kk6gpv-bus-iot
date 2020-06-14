@@ -28,7 +28,7 @@ def on_message(client, userdata, msg):
         pass
 
 
-client = mqtt.Client(clean_session=False)
+client = mqtt.Client(client_id="kk6gpv-bus-iot", clean_session=False)
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect("broker.mqttdashboard.com", 1883)
