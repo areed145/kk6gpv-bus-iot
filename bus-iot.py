@@ -28,9 +28,8 @@ def on_message(client, userdata, msg):
         pass
 
 
-client = mqtt.Client(client_id="", clean_session=True, userdata=None)
+client = mqtt.Client(clean_session=False)
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect("broker.mqttdashboard.com", 1883)
-
 client.loop_forever()
