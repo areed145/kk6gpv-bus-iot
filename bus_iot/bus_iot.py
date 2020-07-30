@@ -4,11 +4,17 @@ import json
 
 
 def on_connect(client, userdata, flags, rc):
+    """
+    Subscribe to MQTT eventstream
+    """
     print("Connected with result code" + str(rc))
     client.subscribe("eventstream/raw")
 
 
 def on_message(client, userdata, msg):
+    """
+    Parse MQTT message
+    """
     message = msg.payload.decode("utf-8")
     message = json.loads(message)
     ins = message["event_data"]["new_state"]
