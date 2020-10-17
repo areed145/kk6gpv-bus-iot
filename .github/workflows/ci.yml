@@ -16,9 +16,6 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: "3.6"
-      - name: Install GCC
-        run: |
-          sudo apt install build-essential
       - name: Check dependencies cache
         uses: actions/cache@v2
         env:
@@ -34,9 +31,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Code quality with black
-        uses: lgeiger/black-action@v1.0.1
-        with:
-          args: ". --check --line-length 79"
+        uses: rgasper/python-black-pull-request-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Lint with flake8
         run: |
           pip install flake8
