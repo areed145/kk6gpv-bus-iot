@@ -31,7 +31,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Code quality with black
-        uses: rgasper/python-black-pull-request-action@master
+        uses: areed145/python-black-pull-request-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Lint with flake8
