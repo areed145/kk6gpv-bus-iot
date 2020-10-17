@@ -8,14 +8,17 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.7"
+          python-version: "3.6"
+      - name: Install GCC
+        run: |
+          sudo apt install build-essential
       - name: Check dependencies cache
         uses: actions/cache@v2
         env:
