@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -24,10 +24,7 @@ jobs:
           path: .cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
-            ${{ runner.os }}-pip-
-      - name: Install scipy dependencies
-        run: |
-          sudo apt-get install gcc      
+            ${{ runner.os }}-pip-      
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
