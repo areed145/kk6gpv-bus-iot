@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-from datetime import datetime
+from datetime import datetime, timezone
 import json
 
 
@@ -22,7 +22,7 @@ class BusIot:
         ins = message["event_data"]["new_state"]
         msg = {}
         msg["type"] = "iot"
-        msg["timestamp"] = datetime.utcnow().isoformat()
+        msg["timestamp"] = datetime.now(timezone.utc).isoformat()
         msg["sensor"] = ins["entity_id"]
         msg["state"] = ins["state"]
         msg["uom"] = ins["attributes"]["unit_of_measurement"]
